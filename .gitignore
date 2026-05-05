@@ -1,0 +1,47 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build output
+dist/
+build/
+*.tsbuildinfo
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Test coverage
+coverage/
+*.lcov
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Mongo memory server cached binaries
+.mongodb-binaries/
+~/.cache/mongodb-binaries/
+
+# OS
+Desktop.ini
+$RECYCLE.BIN/
+
+# Vite
+.vite/
+
+# TypeScript
+*.tsbuildinfo

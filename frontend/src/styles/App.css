@@ -1,0 +1,276 @@
+/* Wine Rental Service — base styles
+   Restrained palette: ink, cream, deep wine red. */
+
+:root {
+  --color-ink: #1a1a1a;
+  --color-cream: #faf6f0;
+  --color-paper: #ffffff;
+  --color-wine: #722f37;
+  --color-wine-dark: #4a1f24;
+  --color-gold: #c9a961;
+  --color-muted: #6b6258;
+  --color-border: #e3ddd2;
+  --color-success-bg: #e8f0e3;
+  --color-success-text: #3a5a2a;
+  --color-error-bg: #f7e3e0;
+  --color-error-text: #8a2a1c;
+  --radius: 4px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Georgia', 'Cambria', serif;
+  color: var(--color-ink);
+  background-color: var(--color-cream);
+  line-height: 1.6;
+}
+
+input, button, textarea, select {
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+a { color: var(--color-wine); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+button {
+  cursor: pointer;
+  background: var(--color-paper);
+  border: 1px solid var(--color-border);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  color: var(--color-ink);
+}
+button:hover { background: var(--color-cream); }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+button.primary {
+  background: var(--color-wine);
+  color: var(--color-paper);
+  border-color: var(--color-wine);
+}
+button.primary:hover { background: var(--color-wine-dark); }
+
+input, textarea, select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-paper);
+}
+
+label {
+  display: block;
+  margin-bottom: 1rem;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+label > input, label > textarea, label > select { margin-top: 0.25rem; }
+
+label small { display: block; margin-top: 0.25rem; color: var(--color-muted); font-size: 0.8rem; }
+
+h1, h2, h3 { font-weight: 600; color: var(--color-ink); }
+h1 { font-size: 1.8rem; margin: 0 0 0.5rem; }
+h2 { font-size: 1.3rem; margin: 0 0 1rem; }
+h3 { font-size: 1.05rem; margin: 0 0 0.5rem; }
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: var(--color-paper);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+.navbar .brand { font-size: 1.2rem; font-weight: 600; color: var(--color-wine); }
+.navbar .nav-links { display: flex; align-items: center; gap: 1rem; }
+.navbar .user-pill { font-size: 0.85rem; color: var(--color-muted); }
+
+.main-content { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+
+/* Auth */
+.auth-page {
+  max-width: 400px;
+  margin: 4rem auto;
+  background: var(--color-paper);
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+}
+.auth-tabs { display: flex; margin-bottom: 1.5rem; border-bottom: 1px solid var(--color-border); }
+.auth-tabs button {
+  flex: 1;
+  border: none;
+  background: none;
+  border-bottom: 2px solid transparent;
+  padding: 0.75rem;
+  border-radius: 0;
+}
+.auth-tabs button.active { border-bottom-color: var(--color-wine); color: var(--color-wine); }
+.auth-form > h2 { margin-bottom: 1.5rem; }
+
+/* Catalog */
+.page-header { margin-bottom: 2rem; }
+.controls { margin-bottom: 1.5rem; max-width: 400px; }
+
+.bottle-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+.bottle-card {
+  background: var(--color-paper);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+}
+.bottle-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+  background: var(--color-cream);
+}
+.bottle-card .vintage { color: var(--color-gold); font-weight: normal; }
+.bottle-card .producer { font-style: italic; color: var(--color-muted); margin: 0.25rem 0; }
+.bottle-card .region { color: var(--color-muted); font-size: 0.9rem; margin: 0.25rem 0 1rem; }
+.bottle-card .pricing { margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--color-border); }
+.bottle-card .deposit { font-size: 0.85rem; color: var(--color-muted); margin-top: 0.25rem; }
+.bottle-card button { margin-top: 1rem; width: 100%; }
+
+/* Modal */
+.modal-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 100;
+}
+.modal {
+  background: var(--color-paper);
+  border-radius: var(--radius);
+  padding: 2rem;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: var(--shadow-md);
+}
+.modal header {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+.modal .close {
+  border: none; background: none; font-size: 1.5rem;
+  padding: 0; line-height: 1; color: var(--color-muted);
+}
+.modal .estimate {
+  background: var(--color-cream);
+  padding: 1rem;
+  border-radius: var(--radius);
+  margin: 1rem 0;
+}
+.modal .estimate > div {
+  display: flex; justify-content: space-between;
+  padding: 0.25rem 0;
+}
+.modal .estimate .total {
+  border-top: 1px solid var(--color-border);
+  padding-top: 0.5rem; margin-top: 0.5rem;
+  font-size: 1.05rem;
+}
+.modal .actions {
+  display: flex; gap: 0.5rem; justify-content: flex-end;
+  margin-top: 1.5rem;
+}
+
+/* Reservations */
+.reservation-list { list-style: none; padding: 0; }
+.reservation {
+  background: var(--color-paper);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow-sm);
+}
+.reservation-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 0.5rem;
+}
+.badge {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.badge-reserved { background: #e3eaf3; color: #2c4a72; }
+.badge-out { background: #f3e9d3; color: #8a6a1f; }
+.badge-returned { background: var(--color-success-bg); color: var(--color-success-text); }
+.badge-cancelled { background: #ebebeb; color: var(--color-muted); }
+.badge-reassigned { background: #e8e3f3; color: #4a3a72; }
+
+/* Staff */
+.staff-page .role-banner {
+  background: var(--color-wine);
+  color: var(--color-paper);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  display: inline-block;
+}
+.staff-actions {
+  display: flex; flex-wrap: wrap; gap: 0.5rem;
+  margin: 1.5rem 0;
+}
+.staff-form {
+  background: var(--color-paper);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  max-width: 700px;
+  box-shadow: var(--shadow-sm);
+}
+.staff-form .grid-2 {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0 1rem;
+}
+.staff-form fieldset {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+.staff-form fieldset label {
+  display: flex; align-items: center; gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.staff-form fieldset input { width: auto; margin: 0; }
+.required { color: var(--color-wine); font-size: 0.85rem; }
+.note { color: var(--color-muted); font-size: 0.85rem; }
+
+/* Banners */
+.banner {
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.banner.success { background: var(--color-success-bg); color: var(--color-success-text); }
+.banner.error, .error {
+  background: var(--color-error-bg);
+  color: var(--color-error-text);
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius);
+}
+.banner button { border: none; background: none; font-size: 1.2rem; padding: 0; color: inherit; }
+
+.empty { color: var(--color-muted); font-style: italic; }
